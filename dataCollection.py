@@ -2,6 +2,10 @@ import pandas as pd
 import nltk as nl
 import re
 import string
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+
+DOCUMENT_ONE = "emails.csv"
 
 def extract_email_body(email_text):
     """
@@ -15,7 +19,7 @@ def extract_email_body(email_text):
     return ""
 pd.options.display.max_rows = 60 #redefine the number of rows we can print with pandas
 
-email_dataframe = pd.read_csv('emails.csv')
+email_dataframe = pd.read_csv(DOCUMENT_ONE)
 
 location_one = extract_email_body(email_dataframe.loc[1, 'message'])
 #print(location_one)
@@ -30,5 +34,17 @@ def preprocess_email_text(email_text):
     return email_text
 
 tester = preprocess_email_text(location_one)
+#print(tester)
 
-print(tester)
+"""Now onto Term frequency using tfdifVectorizer in sklearn"""
+listy = [tester]
+testing_TF = TfidfVectorizer() #object
+result = testing_TF.fit_transform(listy) #send in document can send in array of documents though
+#running into a type issue with fit_transform
+
+#loc = "This is a tester EXAMPLE!!!"
+#fin = preprocess_email_text(loc)
+#tester = [fin]
+
+print(result)
+
