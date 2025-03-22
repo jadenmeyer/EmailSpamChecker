@@ -1,6 +1,7 @@
 import pandas as pd
 import nltk as nl
 import re
+import string
 
 def extract_email_body(email_text):
     """
@@ -17,11 +18,17 @@ pd.options.display.max_rows = 60 #redefine the number of rows we can print with 
 email_dataframe = pd.read_csv('emails.csv')
 
 location_one = extract_email_body(email_dataframe.loc[1, 'message'])
-print(location_one)
-print(pd.options.display.max_rows)
-
-#print(email_dataframe)
+#print(location_one)
+#print(pd.options.display.max_rows)
 
 """Now to Preprocess the data"""
 
+def preprocess_email_text(email_text):
+    email_text = email_text.lower()
+    translation = str.maketrans('', '', string.punctuation)
+    email_text = email_text.translate(translation)
+    return email_text
 
+tester = preprocess_email_text(location_one)
+
+print(tester)
