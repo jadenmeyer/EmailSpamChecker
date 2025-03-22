@@ -12,7 +12,7 @@ def extract_email_body(email_text):
         body = email_text[email_body.end():].strip() #splicer for characters after header text
         return body.strip() #get rid of extra newlines and stuff
     return ""
-
+"""test"""
 pd.options.display.max_rows = 60 #redefine the number of rows we can print with pandas
 
 email_dataframe = pd.read_csv('emails.csv')
