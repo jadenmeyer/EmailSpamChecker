@@ -7,7 +7,7 @@ def extract_email_body(email_text):
     :param email_text: This is a column of the dataframe in which there is an email message.
     :return: a spliced version of the message where the header is cut out.
     """
-    email_body = re.search(r'\n\n', email_text) #assume newline after header is message
+    email_body = re.search(r'\n\n', email_text) #assume newline after header is the message
     if email_body:
         body = email_text[email_body.end():].strip() #splicer for characters after header text
         return body.strip() #get rid of extra newlines and stuff
