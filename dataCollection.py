@@ -3,8 +3,8 @@ import nltk as nl
 import re
 import string
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-
+from sklearn.model_selection import train_test_split #make a training split
+from sklearn.linear_model import LogisticRegression #logistic regression
 DOCUMENT_ONE = "emails.csv"
 
 def extract_email_body(email_text):
@@ -22,6 +22,7 @@ pd.options.display.max_rows = 60 #redefine the number of rows we can print with 
 email_dataframe = pd.read_csv(DOCUMENT_ONE)
 
 location_one = extract_email_body(email_dataframe.loc[1, 'message'])
+
 #print(location_one)
 #print(pd.options.display.max_rows)
 
@@ -48,3 +49,18 @@ result = testing_TF.fit_transform(listy) #send in document can send in array of 
 
 print(result)
 
+"""Onto Training and Testing splitting of data"""
+
+"""Onto choosing a model
+going to explicity use a logistic regression model
+"""
+
+"""
+TODO:
+Build up the model
+analyze the model and its accuracy
+polish up stuff
+add a spam probablity checker
+tune the model
+get into a more workign form
+"""
